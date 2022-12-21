@@ -25,17 +25,16 @@ function handleContactFormSubmit(e) {
 
 function handleContactFormInput({ target }) {
   const { name, value } = target;
-  formData[name] = value || '';
-  console.log(formData);
+  formData[name] = value ;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-
+ 
  
 }
 const savedInputLs =JSON.parse(localStorage.getItem(STORAGE_KEY));
 
 if (savedInputLs) {
-formRef.email.value=savedInputLs.email;
-formRef.message.value=savedInputLs.message;
+formRef.email.value=savedInputLs.email||'';
+formRef.message.value=savedInputLs.message||'';
 }
 
 
