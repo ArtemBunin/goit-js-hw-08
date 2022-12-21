@@ -25,7 +25,8 @@ function handleContactFormSubmit(e) {
 
 function handleContactFormInput({ target }) {
   const { name, value } = target;
-  formData[name] = value;
+  formData[name] = value || '';
+  console.log(formData);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 
  
