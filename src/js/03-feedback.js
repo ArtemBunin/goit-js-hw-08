@@ -15,7 +15,7 @@ formRef.addEventListener('input', throttle(handleContactFormInput, 500));
 
 formRef.addEventListener('submit', handleContactFormSubmit);
 
-const formData = {};
+let formData = {};
 
 function handleContactFormSubmit(e) {
   e.preventDefault();
@@ -25,7 +25,8 @@ function handleContactFormSubmit(e) {
 
 function handleContactFormInput({ target }) {
   const { name, value } = target;
-  formData[name] = value ;
+  formData[name] = value;
+  console.log(formData);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
  
  
@@ -33,6 +34,8 @@ function handleContactFormInput({ target }) {
 const savedInputLs =JSON.parse(localStorage.getItem(STORAGE_KEY));
 
 if (savedInputLs) {
+  formData= savedInputLs
+
 formRef.email.value=savedInputLs.email||'';
 formRef.message.value=savedInputLs.message||'';
 }
